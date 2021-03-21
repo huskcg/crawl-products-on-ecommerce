@@ -9,7 +9,7 @@ const fs = require('fs');
 
   const shopee = await page.evaluate(() => {
     let items = document.getElementsByTagName('script');
-    var withProperty = [];
+    var products = [];
 
     for (const item of items) {
 
@@ -24,7 +24,7 @@ const fs = require('fs');
                 lowPrice : obj.offers.lowPrice ? obj.offers.lowPrice : 0,
                 highPrice : obj.offers.highPrice ? obj.offers.highPrice : 0
               }
-              withProperty.push(product);
+              products.push(product);
             } catch (error) {
               console.log(error);
             }
@@ -34,7 +34,7 @@ const fs = require('fs');
         }
       }
     }
-    return withProperty;
+    return products;
 
   });
   console.log(shopee);
